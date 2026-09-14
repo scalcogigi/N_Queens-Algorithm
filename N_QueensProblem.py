@@ -1,10 +1,8 @@
-from collections import deque
-
+from collections import deque # uma lista que pode ter adições ou remoções de elementos em ambas as extremidades
 
 class ProblemaNDamas:
     def __init__(self, tamanho):
         # Dimensão do tabuleiro.
-        # Exemplo: tamanho = 4 representa um tabuleiro 4x4.
         self.tamanho = tamanho
 
     def posicao_valida(self, estado, nova_coluna):
@@ -14,13 +12,6 @@ class ProblemaNDamas:
         O estado é uma tupla em que:
         - o índice representa a linha;
         - o valor representa a coluna da dama.
-
-        Exemplo:
-        estado = (1, 3)
-
-        Isso significa:
-        - dama na linha 0, coluna 1;
-        - dama na linha 1, coluna 3.
         """
 
         # A próxima dama será colocada depois das damas já existentes.
@@ -33,11 +24,7 @@ class ProblemaNDamas:
             if coluna_existente == nova_coluna:
                 return False
 
-            # Duas damas estão na mesma diagonal quando:
-            #
-            # diferença entre as linhas
-            #              ==
-            # diferença entre as colunas
+
             diferenca_linhas = abs(nova_linha - linha_existente)
             diferenca_colunas = abs(nova_coluna - coluna_existente)
 
@@ -48,12 +35,6 @@ class ProblemaNDamas:
         return True
 
     def sucessores(self, estado):
-        """
-        Gera todos os estados que podem ser alcançados a partir
-        do estado atual.
-
-        Cada sucessor adiciona uma dama válida na próxima linha.
-        """
 
         sucessores = []
 
@@ -71,20 +52,10 @@ class ProblemaNDamas:
         return sucessores
 
     def objetivo(self, estado):
-        """
-        O estado é uma solução quando possui uma dama em cada linha.
-        """
 
-        return len(estado) == self.tamanho
+        return len(estado) == self.tamanho # quando possui uma dama em cada linha
 
     def busca_em_largura(self):
-        """
-        Resolve o problema usando busca em largura — BFS.
-
-        A busca em largura utiliza uma fila:
-        - os primeiros estados inseridos são os primeiros processados.
-        """
-
         # O estado inicial não possui nenhuma dama.
         estado_inicial = ()
 
