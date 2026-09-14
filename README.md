@@ -1,1 +1,1 @@
-# N_Queens-Algorithm
+# Giovanna Barros Scalco
